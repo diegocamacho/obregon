@@ -1,0 +1,2 @@
+[03-Nov-2015 19:30:12 UTC] PHP Warning:  mysql_connect(): Access denied for user 'adminus_digma'@'localhost' (using password: YES) in /home/adminus/public_html/app/includes/db.php on line 7
+[03-Nov-2015 19:31:35 UTC] PHP Warning:  mysql_connect(): Access denied for user 'adminus_digma'@'localhost' (using password: YES) in /home/adminus/public_html/app/includes/db.php on line 7
