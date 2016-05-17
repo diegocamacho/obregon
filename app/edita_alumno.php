@@ -62,6 +62,8 @@ $tutor = mysql_fetch_assoc($qtutor);
                         <div class="tab-content">
                             <div class="tab-pane active" id="portlet_tab1">
                                 <form class="form-horizontal" role="form" id="frm_guarda">
+	                            <div class="alert alert-danger oculto" role="alert" id="msg_error"></div>
+	                            <div class="alert alert-success oculto" role="alert" id="msg_ok"></div>
                         		<h4>Datos del tutor</h4>
                         		
                         			<div class="form-group">
@@ -239,7 +241,8 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		    
                         		    <div class="form-group">
                         		        <div class="col-md-offset-2 col-md-10">
-                        		            <button type="button" class="btn green" id="btn-inscripcion" onclick="EditaAlumno();">Actualizar</button>
+                        		            <button type="button" class="btn green" id="btn-inscripcion" onclick="EditaAlumno();">Actualizar</button>&nbsp;&nbsp;&nbsp;
+                        		            <a href="?Modulo=Alumnos" role="button" class="btn btn-default">Regresar</a>
                         		            <img src="assets/global/img/loading-spinner-grey.gif" border="0" id="load" width="20" style="display: none;" />
                         		        </div>
                         		    </div>
@@ -270,10 +273,9 @@ $tutor = mysql_fetch_assoc($qtutor);
 <script>
 $(function(){
     $('#nombre').focus();
-
 });
 function EditaAlumno(){
-    $('#btn-inscripcion').hide();
+    $('#btn-inscripcion,.btn').hide();
     $('#load').show();
     var datos=$('#frm_guarda').serialize();
     //alert(datos);
@@ -281,14 +283,19 @@ function EditaAlumno(){
     $.post('ac/edita_alumno.php',datos,function(data){
         if(data==1){
             $('#load').hide();
-            $('#btn-inscripcion').show();
-            window.open("?Modulo=Alumnos&msg=2", "_self");
+            $('#msg_error').hide();
+            $('#btn-inscripcion,.btn').show();
+            $('#msg_ok').html("Se han actualizado los datos.");
+            $('#msg_ok').show('Fast');
+            $("html, body").animate({ scrollTop: 0 }, "slow");
         }else{
             $('#load').hide();
-            $('#btn-inscripcion').show();
+            $('#msg_ok').hide();
+            $('#btn-inscripcion,.btn').show();
             $('#msg_error').html(data);
             $('#msg_error').show('Fast');
             $('#msg_error').focus();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
         }
     });
 }

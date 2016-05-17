@@ -31,6 +31,8 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <link href="assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         
         
         <!-- BEGIN THEME GLOBAL STYLES -->
@@ -45,6 +47,9 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <link rel="shortcut icon" href="favicon.ico" /> </head>
 		<!-- END HEAD -->
 		<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+		<style>
+		.oculto{display: none;}
+		</style>
     <body class="page-container-bg-solid">
         <!-- BEGIN HEADER -->
         <div class="page-header">
@@ -418,6 +423,12 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
                             </li>
                             
                             <li class="">
+                                <a href="?Modulo=Alumnos"> Alumnos
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
+                            
+                            <li class="">
                                 <a href="?Modulo=Inscripcion"> Inscripción
                                     <span class="arrow"></span>
                                 </a>
@@ -475,6 +486,10 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
 					case 'EditaAlumno':
 					include("edita_alumno.php");	
 					break;
+					
+					case 'Alumnos':
+					include("alumnos.php");	
+					break;
 							    
 					default:
 					include('dashboard.php');
@@ -523,7 +538,9 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <script src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
         <script src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-        
+        <script src="assets/global/scripts/datatable.js" type="text/javascript"></script>
+        <script src="assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+        <script src="assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
         
         
         
@@ -535,7 +552,7 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         
         <script src="assets/pages/scripts/components-date-time-pickers.js" type="text/javascript"></script>
         
-        
+        <script src="assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
         
         
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
