@@ -13,6 +13,11 @@ $q=mysql_query($sql);
     </div>
 </div>
 <!-- END PAGE HEAD-->
+<style>
+.oculto{
+    display: none;
+}
+</style>
 <!-- BEGIN PAGE CONTENT BODY -->
 <div class="page-content">
     <div class="container">
@@ -33,6 +38,7 @@ $q=mysql_query($sql);
                         </div>
                     </div>
                     <div class="portlet-body">
+                        <div class="alert alert-danger oculto" role="alert" id="msg_error"></div>
                         <form class="form-horizontal" role="form" id="frm_guarda">
                         <h4>Datos del tutor</h4>
                         
@@ -50,7 +56,7 @@ $q=mysql_query($sql);
                                 <div class="col-md-3">
                                     <div class="input-icon">
                                         <i class="fa fa-phone"></i>
-                                        <input type="text" class="form-control" name="telefono1" id="telefono1"> </div>
+                                        <input type="text" class="form-control" maxlength="10" name="telefono1" id="telefono1"> </div>
                                 </div>
                             </div>
                             
@@ -59,7 +65,7 @@ $q=mysql_query($sql);
                                 <div class="col-md-3">
                                     <div class="input-icon">
                                         <i class="fa fa-phone"></i>
-                                        <input type="text" class="form-control" name="telefono2" id="telefono2" > </div>
+                                        <input type="text" class="form-control" maxlength="10" name="telefono2" id="telefono2" > </div>
                                 </div>
                             </div>
                             
@@ -68,7 +74,7 @@ $q=mysql_query($sql);
                                 <div class="col-md-3">
                                     <div class="input-icon">
                                         <i class="fa fa-phone"></i>
-                                        <input type="text" class="form-control" name="telefono3" id="telefono3" > </div>
+                                        <input type="text" class="form-control" maxlength="20" name="telefono3" id="telefono3" > </div>
                                 </div>
                             </div>
                             
@@ -267,7 +273,15 @@ $q=mysql_query($sql);
                                 </div>
                             </div>
                             
-                            
+                            <div class="form-group">
+                                <label for="inputEmail12" class="col-md-2 control-label">Notas u Observaciones</label>
+                                <div class="col-md-6">
+                                    <div class="input-icon">
+                                        <i class="fa fa-book"></i>
+                                        <input type="text" class="form-control" name="observ_pago" id="observ_pagos" > </div>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <button type="button" class="btn green" id="btn-inscripcion" onclick="NuevaInscripcion();">Inscribir</button>
@@ -299,8 +313,8 @@ function NuevaInscripcion(){
 	$('#btn-inscripcion').hide('Fast');
 	$('#load').show();
 	var datos=$('#frm_guarda').serialize();
-	alert(datos);
-	return false;
+	//alert(datos);
+	//return false;
 	$.post('ac/nueva_inscripcion.php',datos,function(data){
 	    if(data==1){
 	    	$('#load').hide();
@@ -311,6 +325,7 @@ function NuevaInscripcion(){
 			$('#btn-inscripcion').show();
 			$('#msg_error').html(data);
 			$('#msg_error').show('Fast');
+            $('#msg_error').focus();
 	    }
 	});
 }
