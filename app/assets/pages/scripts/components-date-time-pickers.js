@@ -6,7 +6,17 @@ var ComponentsDateTimePickers = function () {
             $('.date-picker').datepicker({
                 rtl: App.isRTL(),
                 orientation: "left",
-                autoclose: true
+				language: "es",
+			    autoclose: true,
+			    todayHighlight: true,
+			    daysOfWeekDisabled: "0,6"
+            });
+            
+            $('.fecha').datepicker({
+                rtl: App.isRTL(),
+                orientation: "left",
+				language: "es",
+			    autoclose: true
             });
             //$('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
         }
@@ -30,7 +40,7 @@ var ComponentsDateTimePickers = function () {
 
             $('.timepicker-no-seconds').timepicker({
                 autoclose: true,
-                minuteStep: 5
+                minuteStep: 60
             });
 
             $('.timepicker-24').timepicker({

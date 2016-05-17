@@ -25,6 +25,14 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
+        
+        
+
+        <link href="assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        
+        
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="assets/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
         <link href="assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
@@ -35,8 +43,8 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <link href="assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
-    <!-- END HEAD -->
-
+		<!-- END HEAD -->
+		<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
     <body class="page-container-bg-solid">
         <!-- BEGIN HEADER -->
         <div class="page-header">
@@ -492,11 +500,11 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <!-- END INNER FOOTER -->
         <!-- END FOOTER -->
         <!--[if lt IE 9]>
-<script src="assets/global/plugins/respond.min.js"></script>
-<script src="assets/global/plugins/excanvas.min.js"></script> 
-<![endif]-->
+		<script src="assets/global/plugins/respond.min.js"></script>
+		<script src="assets/global/plugins/excanvas.min.js"></script> 
+		<![endif]-->
         <!-- BEGIN CORE PLUGINS -->
-        <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        
         <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
         <script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
@@ -504,9 +512,28 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
         <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
+        
+        
+        
+        <script src="assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+        <script src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        
+        
+        
+        
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="assets/global/scripts/app.js" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
+        
+        
+        
+        <script src="assets/pages/scripts/components-date-time-pickers.js" type="text/javascript"></script>
+        
+        
+        
+        
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
         <script src="assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
