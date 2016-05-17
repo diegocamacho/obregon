@@ -471,6 +471,10 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
 					case 'Inscripcion':
 					include("inscripcion.php");	
 					break;
+					
+					case 'EditaAlumno':
+					include("edita_alumno.php");	
+					break;
 							    
 					default:
 					include('dashboard.php');
