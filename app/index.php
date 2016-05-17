@@ -53,7 +53,7 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
                 <div class="container">
                     <!-- BEGIN LOGO -->
                     <div class="page-logo">
-                        <a href="index.html">
+                        <a href="index.php">
                             <img src="logo_azul_web.png" alt="logo" class="logo-default" width="185">
                         </a>
                     </div>

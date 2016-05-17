@@ -34,44 +34,21 @@ if(!$fecha_nacimiento) exit ("Debe escribir la fecha de nacimiento del alumno");
 $fecha_nacimiento = fechaBase($fecha_nacimiento);
 if(!$sexo) exit ("Debe elegir el género del alumno");
 //FIN DATOS ALUMNO
-//REVISAMOS LO DE LOS PAGOS
-if(!$id_salon) exit("Debe seleccionar el salón de clases");
-if(!$inicio) exit("Debe escribir una fecha de inicio");
-if(!$final) exit("Debe escribir una fecha de fin");
-if(!$hora_entrada) exit("Debe seleccionar la hora de entrada del alumno");
-$hora_entrada = date("H:i",strtotime($hora_entrada));
-if(!$pago) exit("Debe escribir la cantidad de pago que se realiza");
-if($libro){
-	$libro = 1;
-}
-//FIN DE LOS PAGOS
+
 
 //INSERTAMOS AL TUTOR
-$q = mysql_query("INSERT INTO tutores (nombre,telefono1,telefono2,telefono3,direccion,parentesco,email,adicional_nombre,adicional_telefono,notas) 
-	VALUES ('$nombre','$telefono1','$telefono2','$telefono3','$direccion','$parentesco','$email','$adicional_nombre','$adicional_telefono','$notas')");
-$id_tutor = mysql_insert_id();
+$q = mysql_query("UPDATE tutores SET nombre='$nombre',telefono1='$telefono1',telefono2='$telefono2',telefono3='$telefono3',direccion='$direccion'
+	,parentesco='$parentesco',email='$email',adicional_nombre='$adicional_nombre',adicional_telefono='$adicional_telefono',notas='$notas' 
+	WHERE id_tutor = '$id_tutor'");
 
 //INSERTAMOS AL ALUMNO
-$q2 = mysql_query("INSERT INTO alumnos (nombre,fecha_nacimiento,sexo,condicion_medica,alergias,grupo_sanguineo) 
-	VALUES ('$alumno_nombre','$fecha_nacimiento','$sexo','$condiciones','$alergias','$grupo_sanguineo')");
-$id_alumno = mysql_insert_id();
+$q2 = mysql_query("UPDATE alumnos SET nombre='$alumno_nombre',fecha_nacimiento='$fecha_nacimiento',sexo='$sexo',
+	condicion_medica='$condiciones',alergias='$alergias',grupo_sanguineo='$grupo_sanguineo' 
+	WHERE id_alumno='$id_alumno'");
 
-//INSERTAMOS EL PAGO
-$inicio = fechaBase($inicio);
-$final = fechaBase($final);
-$dias = (strtotime($final) - strtotime($inicio)) /24/3600;
-$dias++;
-$q3 = mysql_query("INSERT INTO pagos (id_alumno,fecha_inicio,fecha_final,dias,monto,observacion)
-	VALUES ('$id_alumno','$inicio','$final','$dias','$pago','$observ_pago')");
 
-if($q && $q2 && $q3){
-	$q4 = mysql_query("INSERT INTO inscripcion (id_usuario,id_alumno,id_tutor,id_salon,horario,libro,fecha_hora)
-		VALUES ('$s_id','$id_alumno','$id_tutor','$id_salon','$hora_entrada','$libro','$fechahora')");
-	if($q4){
-		echo "1";
-	}else{
-		echo "Ocurrió un problema al inscribir al alumno; contacte a soporte";
-	}
+if($q && $q2){
+	echo "1";
 }else{
 	echo "Ocurrió un problema con la agregación de alguna información; contacte a soporte";
 }
