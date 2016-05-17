@@ -65,7 +65,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		<h4>Datos del tutor</h4>
                         		
                         			<div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Nombre</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Nombre <label class="text-danger">*</label></label>
                         		        <div class="col-md-6">
                         		            <div class="input-icon">
                         		                <i class="fa fa-user"></i>
@@ -74,7 +74,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		    </div>
                         		    
                         		    <div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Teléfono Celular</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Teléfono Celular <label class="text-danger">*</label></label>
                         		        <div class="col-md-3">
                         		            <div class="input-icon">
                         		                <i class="fa fa-phone"></i>
@@ -83,7 +83,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		    </div>
                         		    
                         		    <div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Teléfono de Casa</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Teléfono de Casa <label class="text-danger">*</label></label>
                         		        <div class="col-md-3">
                         		            <div class="input-icon">
                         		                <i class="fa fa-phone"></i>
@@ -101,7 +101,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		    </div>
                         		    
                         		    <div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Dirección</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Dirección <label class="text-danger">*</label></label>
                         		        <div class="col-md-6">
                         		            <div class="input-icon">
                         		                <i class="fa fa-home"></i>
@@ -110,7 +110,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		    </div>
                         		    
                         		    <div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Parentesco</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Parentesco <label class="text-danger">*</label></label>
                         		        <div class="col-md-6">
                         		            <div class="input-icon">
                         		                <i class="fa fa-user"></i>
@@ -119,7 +119,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		    </div>
                         		    
                         		    <div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Email</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Email <label class="text-danger">*</label></label>
                         		        <div class="col-md-6">
                         		            <div class="input-icon">
                         		                <i class="fa fa-envelope"></i>
@@ -179,7 +179,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		<h4>Datos del Alumno</h4>
                         		
                         			<div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Nombre</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Nombre <label class="text-danger">*</label></label>
                         		        <div class="col-md-6">
                         		            <div class="input-icon">
                         		                <i class="fa fa-user"></i>
@@ -188,7 +188,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		    </div>
                         		    
                         		    <div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Fecha de Nacimiento</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Fecha de Nacimiento <label class="text-danger">*</label></label>
                         		        <div class="col-md-6">
                         		            <div class="input-icon">
                         		                <i class="fa fa-calendar"></i>
@@ -197,7 +197,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		    </div>
                         		    
                         		    <div class="form-group">
-                        		        <label for="inputEmail12" class="col-md-2 control-label">Sexo</label>
+                        		        <label for="inputEmail12" class="col-md-2 control-label">Sexo <label class="text-danger">*</label></label>
                         		        <div class="col-md-6">
                         		            <select class="form-control" name="sexo">
                         		                <option value="0">Seleccione uno</option>
@@ -273,7 +273,7 @@ $(function(){
 
 });
 function EditaAlumno(){
-    $('#btn-inscripcion').hide('Fast');
+    $('#btn-inscripcion').hide();
     $('#load').show();
     var datos=$('#frm_guarda').serialize();
     //alert(datos);

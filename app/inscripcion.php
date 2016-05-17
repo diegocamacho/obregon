@@ -43,7 +43,7 @@ $q=mysql_query($sql);
                         <h4>Datos del tutor</h4>
                         
                         	<div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Nombre</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Nombre <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
                                     <div class="input-icon">
                                         <i class="fa fa-user"></i>
@@ -52,7 +52,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Teléfono Celular</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Teléfono Celular <label class="text-danger">*</label></label>
                                 <div class="col-md-3">
                                     <div class="input-icon">
                                         <i class="fa fa-phone"></i>
@@ -61,7 +61,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Teléfono de Casa</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Teléfono de Casa <label class="text-danger">*</label></label>
                                 <div class="col-md-3">
                                     <div class="input-icon">
                                         <i class="fa fa-phone"></i>
@@ -79,7 +79,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Dirección</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Dirección <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
                                     <div class="input-icon">
                                         <i class="fa fa-home"></i>
@@ -88,7 +88,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Parentesco</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Parentesco <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
                                     <div class="input-icon">
                                         <i class="fa fa-user"></i>
@@ -97,7 +97,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Email</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Email <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
                                     <div class="input-icon">
                                         <i class="fa fa-envelope"></i>
@@ -157,7 +157,7 @@ $q=mysql_query($sql);
                         <h4>Datos del Alumno</h4>
                         
                         	<div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Nombre</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Nombre <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
                                     <div class="input-icon">
                                         <i class="fa fa-user"></i>
@@ -166,7 +166,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Fecha de Nacimiento</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Fecha de Nacimiento <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
                                     <div class="input-icon">
                                         <i class="fa fa-calendar"></i>
@@ -175,7 +175,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Sexo</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Sexo <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="sexo">
                                         <option value="0">Seleccione uno</option>
@@ -218,7 +218,7 @@ $q=mysql_query($sql);
                         <h4>Datos de Pago</h4>
                         
                         	<div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Salón</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Salón <label class="text-danger">*</label></label>
                                 <div class="col-md-4">
 									<select class="form-control" name="id_salon">
                                         <option value="0">Seleccione uno</option>
@@ -230,7 +230,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Periódo de Clase</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Periódo de Clase <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
 									<div class="input-group input-large date-picker input-daterange" data-date-format="mm/dd/yyyy">
                                         <input type="text" class="form-control" name="inicio">
@@ -242,7 +242,7 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Hora de Entrada</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Hora de Entrada <label class="text-danger">*</label></label>
                                 <div class="col-md-2">
 									<div class="input-group">
                                         <input type="text" class="form-control timepicker timepicker-no-seconds" name="hora_entrada">
@@ -256,12 +256,17 @@ $q=mysql_query($sql);
                             </div>
                             
                             <div class="form-group">
-                                <label for="inputEmail12" class="col-md-2 control-label">Pago</label>
+                                <label for="inputEmail12" class="col-md-2 control-label">Pago <label class="text-danger">*</label></label>
                                 <div class="col-md-2">
                                     <div class="input-icon">
                                         <i class="fa fa-usd"></i>
-                                        <input type="number" class="form-control" name="pago" id="pago"> </div>
+                                        <input type="number" class="form-control" name="pago" id="pago"> 
+                                    </div>
                                 </div>
+                                <label class="mt-checkbox">
+                                        <input type="checkbox" name="beca" id="beca"> Becado
+                                        <span></span>
+                                </label>
                             </div>
                             
                             <div class="form-group">
@@ -329,4 +334,13 @@ function NuevaInscripcion(){
 	    }
 	});
 }
+
+$('#beca').click(function(){
+    if($('#beca').is(':checked')){
+        $('#pago').attr('disabled',true);
+        $('#pago').val('');
+    }else{
+        $('#pago').attr('disabled',false);;
+    }
+});
 </script>

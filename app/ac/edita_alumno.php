@@ -12,8 +12,8 @@ if(!$telefono1) exit("No coloco el número de celular");
 if(!escapar($telefono1,1) || strlen($telefono1)<10) exit("El número celular que colocó no es válido");
 if(!$telefono2) exit("No coloco el teléfono de casa");
 if(!escapar($telefono2,1)) exit("El teléfono de casa que colocó no es válido");
-if(!$telefono3) exit("No coloco el teléfono de oficina");
-//if(!escapar($telefono1,1)) exit("El número celular que colocó no es válido");
+//if(!$telefono3) exit("No coloco el teléfono de oficina");
+//if(!escapar($telefono3,1)) exit("El número celular que colocó no es válido");
 if(!$direccion) exit("No escribío la dirección del tutor");
 if(!$parentesco) exit("No escribío el parentesco del tutor");
 if(escapar($parentesco,1)) exit("El parentesco que escribío no es válido");
@@ -21,7 +21,8 @@ if(!$email) exit("No escribío el email del tutor");
 if(!validarEmail($email)) exit("El email que escríbio no es válido");
 //FIN DATOS TUTOR
 //ADICIONALES
-if($adicional_nombre){
+if($adicional_nombre || $adicional_telefono){
+	if(!$adicional_nombre) exit("No coloco el nombre de la persona adicional");
 	if(escapar($adicional_nombre,1)) exit("El nombre del adicional que escribío no es válido");
 	if(!$adicional_telefono) exit("No coloco el teléfono de la persona adicional");
 	if(!escapar($adicional_telefono,1)) exit("El teléfono del adicional que colocó no es válido");
