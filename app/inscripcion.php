@@ -310,7 +310,7 @@ $(function(){
 
 });
 function NuevaInscripcion(){
-	$('#btn-inscripcion').hide('Fast');
+	$('#btn-inscripcion').hide();
 	$('#load').show();
 	var datos=$('#frm_guarda').serialize();
 	//alert(datos);
