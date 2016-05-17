@@ -325,7 +325,7 @@ function NuevaInscripcion(){
 			$('#btn-inscripcion').show();
 			$('#msg_error').html(data);
 			$('#msg_error').show('Fast');
-            $('#msg_error').focus();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
 	    }
 	});
 }
