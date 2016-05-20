@@ -15,6 +15,10 @@ $qtutor = mysql_query("SELECT * FROM tutores WHERE id_tutor = '$id_tutor'");
 
 $alumno = mysql_fetch_assoc($qalumno);
 $tutor = mysql_fetch_assoc($qtutor);
+
+$sql_pagos="SELECT * FROM pagos WHERE id_alumno=$id_alumno";
+$q_pagos=mysql_query($sql_pagos);
+$valida=mysql_num_rows($q_pagos);
 ?>
 <!-- BEGIN PAGE HEAD--
 <div class="page-head">
@@ -47,7 +51,7 @@ $tutor = mysql_fetch_assoc($qtutor);
                     <div class="portlet-title tabbable-line">
                         <div class="caption">
                             <i class="icon-user-follow font-dark"></i>
-                            <span class="caption-subject font-dark bold uppercase">Inscripción</span>
+                            <span class="caption-subject font-dark bold uppercase">Perfil de <?=$alumno['nombre']?></span>
                         </div>
                         <ul class="nav nav-tabs">
 	                        <li class="active">
@@ -127,28 +131,8 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		                <i class="fa fa-envelope"></i>
                         		                <input type="email" class="form-control" name="email" id="email" value="<?=$tutor['email']?>"> </div>
                         		        </div>
-                        		    </div>
-                        		    
-                        		    <!--
-                        		    <div class="form-group">
-                        		        <label for="inputPassword1" class="col-md-2 control-label">Password</label>
-                        		        <div class="col-md-4">
-                        		            <div class="input-icon right">
-                        		                <i class="fa fa-user"></i>
-                        		                <input type="password" class="form-control" id="inputPassword1" placeholder="Password"> </div>
-                        		            <div class="help-block"> with right aligned icon </div>
-                        		        </div>
-                        		    </div>
-                        		    
-                        		    <div class="form-group">
-                        		        <div class="col-md-offset-2 col-md-4">
-                        		            <label class="mt-checkbox">
-                        		                <input type="checkbox"> Remember me
-                        		                <span></span>
-                        		            </label>
-                        		        </div>
-                        		    </div>
-                        		    -->
+                        		    </div>                        		    
+                        		   
                         		    <div class="form-group">
                         		        <label for="inputEmail12" class="col-md-2 control-label">Notas u Observaciones</label>
                         		        <div class="col-md-6">
@@ -249,7 +233,37 @@ $tutor = mysql_fetch_assoc($qtutor);
                         		</form>
                             </div>
                             <div class="tab-pane" id="portlet_tab2">
-                                <h2>Pagos</h2>
+                                <h4>Historial de pagos</h4>
+                        		<? if($valida){ ?>
+                        		<table class="table table-striped table-bordered table-hover" >
+                                    <thead>
+                                        <tr>
+                                            <th width="10%"> Fecha Inicio </th>
+                                            <th width="10%"> Fecha Final </th>
+                                            <th width="10%"> Días  </th>
+                                            <th width="10%" style="text-align: center"> Monto </th>
+                                            <th width="50%"> Observación </th>
+                                            <th width="10%">  </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+	                                    <? while($ft=mysql_fetch_assoc($q_pagos)){ ?>
+                                        <tr class="odd gradeX">
+                                            <td> <?=fechaLetra($ft['fecha_inicio'])?> </td>
+                                            <td> <?=fechaLetra($ft['fecha_final'])?> </td>
+                                            <td><?=$ft['dias']?></td>
+                                            <td align="right"><?=number_format($ft['monto'],2)?></td>
+                                            <td><?=$ft['observacion']?></td>
+                                            <td align="right">
+	                                            <a href="#" onclick="EliminaPago(<?=$ft['id_pago']?>)" class="btn sbold red btn-xs" role="button">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                        <? } ?>
+                                    </tbody>
+                                </table>
+                                <? }else{ ?>
+                                <div class="alert alert-info" role="alert">Aún no se han recibido pagos de este alumno.</div>
+                                <? } ?>
                             </div>
                             
                         </div>

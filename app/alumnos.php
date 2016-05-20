@@ -6,6 +6,15 @@ JOIN salones ON salones.id_salon=inscripcion.id_salon
 LEFT JOIN pagos ON pagos.id_alumno=alumnos.id_alumno
 WHERE alumnos.activo=1";
 $q=mysql_query($sql);
+
+$sql2="SELECT *, alumnos.nombre AS alumno, tutores.nombre AS tutor, salones.nombre AS salon FROM alumnos 
+JOIN inscripcion ON inscripcion.id_alumno=alumnos.id_alumno
+JOIN tutores ON tutores.id_tutor=inscripcion.id_tutor
+JOIN salones ON salones.id_salon=inscripcion.id_salon
+LEFT JOIN pagos ON pagos.id_alumno=alumnos.id_alumno
+WHERE alumnos.activo=0";
+$q2=mysql_query($sql2);
+$valida=mysql_num_rows($q2);
 ?>
 <!-- BEGIN PAGE HEAD--
 <div class="page-head">
@@ -54,7 +63,7 @@ $q=mysql_query($sql);
                             <div class="tab-pane active" id="portlet_tab1">
                         		<h4>Alumnos Activos</h4>
                         		
-                        		<table class="table table-striped table-bordered table-hover" id="sample_1">
+                        		<table class="table table-striped table-bordered table-hover dtable">
                                     <thead>
                                         <tr>
                                             <th width="30%"> Alumno </th>
@@ -86,6 +95,39 @@ $q=mysql_query($sql);
                             </div>
                             <div class="tab-pane" id="portlet_tab2">
                                 <h4>Alumnos Desactivados</h4>
+                                <? if($valida){ ?>
+                                <table class="table table-striped table-bordered table-hover dtable">
+                                    <thead>
+                                        <tr>
+                                            <th width="30%"> Alumno </th>
+                                            <th width="30%"> Tutor </th>
+                                            <th> Teléfono </th>
+                                            <th> Salón </th>
+                                            <th> Horario </th>
+                                            <th> Vencimiento </th>
+                                            <th>  </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+	                                    <? while($ft=mysql_fetch_assoc($q2)){ ?>
+                                        <tr class="odd gradeX">
+                                            
+                                            <td><?=$ft['alumno']?></td>
+                                            <td><?=$ft['tutor']?></td>
+                                            <td><?=$ft['telefono1']?></td>
+                                            <td> <?=$ft['salon']?> </td>
+                                            <td> <?=substr($ft['horario'],0,5)?> </td>
+                                            <td> <?=fechaLetra($ft['fecha_final'])?> </td>
+                                            <td align="right">
+	                                            <a href="?Modulo=EditaAlumno&id=<?=$ft['id_alumno']?>" class="btn sbold green btn-xs" role="button">Perfil</a>
+                                            </td>
+                                        </tr>
+                                        <? } ?>
+                                    </tbody>
+                                </table>
+                                <? }else{ ?>
+                                <div class="alert alert-info" role="alert">Aún no tenemos alumnos desactivados.</div>
+                                <? } ?>
                             </div>
                             
                         </div>

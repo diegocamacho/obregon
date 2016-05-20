@@ -2,7 +2,7 @@ var TableDatatablesManaged = function () {
 
     var initTable1 = function () {
 
-        var table = $('#sample_1');
+        var table = $('.dtable');
 
         // begin first table
         table.dataTable({
@@ -13,18 +13,18 @@ var TableDatatablesManaged = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "emptyTable": "No data available in table",
-                "info": "Showing _START_ to _END_ of _TOTAL_ records",
-                "infoEmpty": "No records found",
+                "emptyTable": "Dato no disponible en la tabla",
+                "info": "Viendo _START_ de _END_ de _TOTAL_ resultados",
+                "infoEmpty": "No hay resultados",
                 "infoFiltered": "(filtered1 from _MAX_ total records)",
-                "lengthMenu": "Show _MENU_",
-                "search": "Search:",
-                "zeroRecords": "No matching records found",
+                "lengthMenu": "Ver _MENU_",
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron resultados",
                 "paginate": {
-                    "previous":"Prev",
-                    "next": "Next",
-                    "last": "Last",
-                    "first": "First"
+                    "previous":"Anterior",
+                    "next": "Siguiente",
+                    "last": "Ultima",
+                    "first": "Primera"
                 }
             },
 
@@ -38,7 +38,7 @@ var TableDatatablesManaged = function () {
             // So when dropdowns used the scrollable div should be removed. 
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
-            "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+            "bStateSave": false, // save datatable state(pagination, sort, etc) in cookie.
 
             "columnDefs": [ {
                 "targets": 0,
@@ -48,24 +48,24 @@ var TableDatatablesManaged = function () {
 
             "lengthMenu": [
                 [5, 15, 20, -1],
-                [5, 15, 20, "All"] // change per page values here
+                [5, 15, 20, "Todos"] // change per page values here
             ],
             // set the initial value
             "pageLength": 5,            
             "pagingType": "bootstrap_full_number",
             "columnDefs": [{  // set default column settings
                 'orderable': false,
-                'targets': [0]
+                'targets': [0,1,2,3,4,5,6]
             }, {
                 "searchable": false,
                 "targets": [0]
             }],
             "order": [
-                [1, "asc"]
+                [0, "asc"]
             ] // set first column as a default sort by asc
         });
 
-        var tableWrapper = jQuery('#sample_1_wrapper');
+        var tableWrapper = jQuery('.dtable_wrapper');
 
         table.find('.group-checkable').change(function () {
             var set = jQuery(this).attr("data-set");

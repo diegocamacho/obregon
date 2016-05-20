@@ -416,53 +416,35 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
                     <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                     <div class="hor-menu  hor-menu-light">
                         <ul class="nav navbar-nav">
-                            <li class="">
-                                <a href="javascript:;"> Dashboard
+                            <li class="<? if(!$menu){ echo "active"; }?>">
+                                <a href="index.php"> Dashboard
                                     <span class="arrow"></span>
                                 </a>
                             </li>
                             
-                            <li class="">
+                            <li class="<? if($menu=="Alumnos"){ echo "active"; }?>">
                                 <a href="?Modulo=Alumnos"> Alumnos
                                     <span class="arrow"></span>
                                 </a>
                             </li>
                             
-                            <li class="">
+                            <li class="<? if($menu=="Inscripcion"){ echo "active"; }?>">
                                 <a href="?Modulo=Inscripcion"> Inscripción
                                     <span class="arrow"></span>
                                 </a>
                             </li>
-                            <!--
-                            <li class="menu-dropdown classic-menu-dropdown active">
-                                <a href="javascript:;"> Layouts
+
+                            <li class="menu-dropdown classic-menu-dropdown">
+                                <a href="javascript:;"> Configuración
                                     <span class="arrow"></span>
                                 </a>
                                 <ul class="dropdown-menu pull-left">
-                                    <li class=" active">
-                                        <a href="layout_mega_menu_light.html" class="nav-link  active"> Light Mega Menu </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="layout_top_bar_light.html" class="nav-link  "> Light Top Bar Dropdowns </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="layout_fluid_page.html" class="nav-link  "> Fluid Page </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="layout_top_bar_fixed.html" class="nav-link  "> Fixed Top Bar </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="layout_mega_menu_fixed.html" class="nav-link  "> Fixed Mega Menu </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="layout_disabled_menu.html" class="nav-link  "> Disabled Menu Links </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="layout_blank_page.html" class="nav-link  "> Blank Page </a>
+                                    <li class="">
+                                        <a href="?Modulo=Usuarios" class="nav-link">Usuarios </a>
                                     </li>
                                 </ul>
                             </li>
-                            -->
+                            
                         </ul>
                     </div>
                     <!-- END MEGA MENU -->
@@ -489,6 +471,10 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
 					
 					case 'Alumnos':
 					include("alumnos.php");	
+					break;
+					
+					case 'Usuarios':
+					include("usuarios.php");	
 					break;
 							    
 					default:
@@ -552,7 +538,7 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         
         <script src="assets/pages/scripts/components-date-time-pickers.js" type="text/javascript"></script>
         
-        <script src="assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
+        <script src="assets/pages/scripts/table-datatables-managed.js" type="text/javascript"></script>
         
         
         <!-- BEGIN THEME LAYOUT SCRIPTS -->

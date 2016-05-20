@@ -1,7 +1,7 @@
 <?
 $sql="SELECT * FROM usuarios 
 JOIN tipo_usuario ON tipo_usuario.id_tipo_usuario=usuarios.id_tipo_usuario
-WHERE id_empresa=$s_id_empresa
+WHERE activo=1
 ORDER BY usuarios.id_tipo_usuario ASC";
 $q=mysql_query($sql);
 
@@ -18,75 +18,78 @@ if($s_tipo!=1){
 }
 </style>
 
-
-<div class="row">
-	<div class="col-md-12">
-		<!-- Confirmación -->
-		  <? if($_GET['msg']==1){ ?>
-		  		<br>
-		  		<div class="alert alert-dismissable alert-success">
-			  		<button type="button" class="close" data-dismiss="alert">×</button>
-			  		<p>El usuario se ha agregado</p>
-			  	</div>
-		  <? }if($_GET['msg']==2){ ?>
-		  		<br>
-		  		<div class="alert alert-dismissable alert-info">
-			  		<button type="button" class="close" data-dismiss="alert">×</button>
-			  		<p>El usuario se ha editado</p>
-			  	</div>
-		  <? } ?>
-		  <!-- Contenido -->
-		<!-- BEGIN EXAMPLE TABLE PORTLET-->
-		<div class="portlet light">
-			<div class="portlet-title">
-				<div class="caption">
-					<i class="icon-users font-green-sharp"></i>
-					<span class="caption-subject font-green-sharp bold uppercase">Usuarios</span>
+<div class="page-content">
+    <div class="container">
+	    
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Confirmación -->
+				  <? if($_GET['msg']==1){ ?>
+				  		<br>
+				  		<div class="alert alert-dismissable alert-success">
+					  		<button type="button" class="close" data-dismiss="alert">×</button>
+					  		<p>El usuario se ha agregado</p>
+					  	</div>
+				  <? }if($_GET['msg']==2){ ?>
+				  		<br>
+				  		<div class="alert alert-dismissable alert-info">
+					  		<button type="button" class="close" data-dismiss="alert">×</button>
+					  		<p>El usuario se ha editado</p>
+					  	</div>
+				  <? } ?>
+				  <!-- Contenido -->
+				<!-- BEGIN EXAMPLE TABLE PORTLET-->
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="icon-users font-green-sharp"></i>
+							<span class="caption-subject font-green-sharp bold uppercase">Usuarios</span>
+						</div>
+						<div class="actions btn-set">
+							<a href="javascript:;" class="btn btn-sm btn-circle blue easy-pie-chart-reload" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#NuevoUsuario"><i class="fa fa-plus"></i> Agregar usuario </a>
+						</div>
+					</div>
+					<div class="portlet-body">
+						<table class="table table-striped table-bordered table-hover">
+							<thead>
+						        <tr>
+						          <th>Nombre</th>
+						          <th>Tipo</th>
+						          <th>Celular</th>
+						          <th>Email</th>
+						          <th>Último Acceso</th>
+						          <th width="180"></th>
+						        </tr>
+						      </thead>
+						      <tbody>
+						      <? while($ft=mysql_fetch_assoc($q)){ ?>
+						        <tr>
+						          <td><?=$ft['nombre']?></td>
+						          <td><?=$ft['tipo_usuario']?></td>
+						          <td><?=$ft['celular']?></td>
+						          <td><?=$ft['email']?></td>
+						          <td><? if($ft['ultimo_acceso']){ echo devuelveFechaHora($ft['ultimo_acceso']); }else{ echo "NUNCA"; }?></td>
+						          <td align="right">
+						          		<img src="assets/global/img/loading-spinner-grey.gif" border="0" id="load_<?=$ft['id_usuario']?>" width="19" class="oculto" />
+						          	<? if($ft['activo']==1){ ?>
+						          		<span class="label label-success link btn_<?=$ft['id_usuario']?>" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#EditaUsuario" data-id="<?=$ft['id_usuario']?>">Editar</span> &nbsp; &nbsp; 
+						          		<span class="label label-danger link btn_<?=$ft['id_usuario']?>" onclick="javascript:Desactiva(<?=$ft['id_usuario']?>)">Desactivar</span>
+						          	<? }else{ ?>
+						          		<span class="label label-warning link btn_<?=$ft['id_usuario']?>" onclick="javascript:Activa(<?=$ft['id_usuario']?>)">Activar</span>
+						          	<? } ?>
+						          </td>
+						        </tr>
+						      <? } ?>
+						      </tbody>
+						</table>
+					</div>
 				</div>
-				<div class="actions btn-set">
-					<a href="javascript:;" class="btn btn-sm btn-circle blue easy-pie-chart-reload" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#NuevoUsuario"><i class="fa fa-plus"></i> Agregar usuario </a>
-				</div>
-			</div>
-			<div class="portlet-body">
-				<table class="table table-striped table-bordered table-hover">
-					<thead>
-				        <tr>
-				          <th>Nombre</th>
-				          <th>Tipo</th>
-				          <th>Celular</th>
-				          <th>Email</th>
-				          <th>Último Acceso</th>
-				          <th width="180"></th>
-				        </tr>
-				      </thead>
-				      <tbody>
-				      <? while($ft=mysql_fetch_assoc($q)){ ?>
-				        <tr>
-				          <td><?=$ft['nombre']?></td>
-				          <td><?=$ft['tipo']?></td>
-				          <td><?=$ft['celular']?></td>
-				          <td><?=$ft['email']?></td>
-				          <td><? if($ft['ultimo_acceso']){ echo devuelveFechaHora($ft['ultimo_acceso']); }else{ echo "NUNCA"; }?></td>
-				          <td align="right">
-				          		<img src="assets/global/img/loading-spinner-grey.gif" border="0" id="load_<?=$ft['id_usuario']?>" width="19" class="oculto" />
-				          	<? if($ft['activo']==1){ ?>
-				          		<span class="label label-success link btn_<?=$ft['id_usuario']?>" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#EditaUsuario" data-id="<?=$ft['id_usuario']?>">Editar</span> &nbsp; &nbsp; 
-				          		<span class="label label-danger link btn_<?=$ft['id_usuario']?>" onclick="javascript:Desactiva(<?=$ft['id_usuario']?>)">Desactivar</span>
-				          	<? }else{ ?>
-				          		<span class="label label-warning link btn_<?=$ft['id_usuario']?>" onclick="javascript:Activa(<?=$ft['id_usuario']?>)">Activar</span>
-				          	<? } ?>
-				          </td>
-				        </tr>
-				      <? } ?>
-				      </tbody>
-				</table>
+				<!-- END EXAMPLE TABLE PORTLET-->
 			</div>
 		</div>
-		<!-- END EXAMPLE TABLE PORTLET-->
-	</div>
+
+    </div>
 </div>
-
-
 
 
 
