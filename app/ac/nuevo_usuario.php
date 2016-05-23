@@ -26,7 +26,7 @@ if($valida>0){
 	exit("La cuenta de correo ".$email." ya esta en uso.");
 }else{
 	//Insertamos datos
-	$sql="INSERT INTO usuarios (id_tipo_usuario,id_empresa,nombre,email,pass,celular) VALUES ('$id_tipo_usuario','$s_id_empresa','$nombre','$email','$password','$celular')";
+	$sql="INSERT INTO usuarios (id_tipo_usuario,nombre,email,pass,celular) VALUES ('$id_tipo_usuario','$nombre','$email','$password','$celular')";
 	$q=mysql_query($sql);
 	if($q){
 		echo "1";

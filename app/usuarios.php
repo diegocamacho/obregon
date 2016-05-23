@@ -119,13 +119,12 @@ if($s_tipo!=1){
 				<label for="nombre" class="col-md-3 control-label">Tipo de Usuario</label>
 				<div class="col-md-9">
 					<select class="form-control" name="id_tipo_usuario">
-                    	<option></option>
                     	<?
-	                    $sq="SELECT * FROM tipo_usuario WHERE usa=1";	
+	                    $sq="SELECT * FROM tipo_usuario";	
 	                    $q=mysql_query($sq);
 	                    while($ft=mysql_fetch_assoc($q)){
 						?>
-						<option value="<?=$ft['id_tipo_usuario']?>"><?=$ft['tipo']?></option>
+						<option value="<?=$ft['id_tipo_usuario']?>"><?=$ft['tipo_usuario']?></option>
 						<? } ?>
 					</select>
 				</div>
@@ -197,13 +196,12 @@ if($s_tipo!=1){
 				<label for="nombre" class="col-md-3 control-label">Tipo de Usuario</label>
 				<div class="col-md-9">
 					<select class="form-control" name="id_tipo_usuario" id="id_tipo_usuario">
-                    	<option></option>
                     	<?
-	                    $sq="SELECT * FROM tipo_usuario WHERE usa=1";	
+	                    $sq="SELECT * FROM tipo_usuario ";	
 	                    $q=mysql_query($sq);
 	                    while($ft=mysql_fetch_assoc($q)){
 						?>
-						<option value="<?=$ft['id_tipo_usuario']?>"><?=$ft['tipo']?></option>
+						<option value="<?=$ft['id_tipo_usuario']?>"><?=$ft['tipo_usuario']?></option>
 						<? } ?>
 					</select>
 				</div>
