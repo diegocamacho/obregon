@@ -33,6 +33,8 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <link href="assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
         
         
         <!-- BEGIN THEME GLOBAL STYLES -->
@@ -433,6 +435,12 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
                                     <span class="arrow"></span>
                                 </a>
                             </li>
+                            
+                            <li class="<? if($menu=="Pagos"){ echo "active"; }?>">
+                                <a href="?Modulo=Pagos"> Pagos
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
 
                             <li class="menu-dropdown classic-menu-dropdown">
                                 <a href="javascript:;"> Configuración
@@ -475,6 +483,10 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
 					
 					case 'Usuarios':
 					include("usuarios.php");	
+					break;
+					
+					case 'Pagos':
+					include("pagos.php");	
 					break;
 							    
 					default:
@@ -527,7 +539,7 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <script src="assets/global/scripts/datatable.js" type="text/javascript"></script>
         <script src="assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
         <script src="assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-        
+        <script src="assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
         
         
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
@@ -535,7 +547,7 @@ $menu = isset($_GET['Modulo']) ? $_GET['Modulo']: NULL;
         <!-- END THEME GLOBAL SCRIPTS -->
         
         
-        
+        <script src="assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
         <script src="assets/pages/scripts/components-date-time-pickers.js" type="text/javascript"></script>
         
         <script src="assets/pages/scripts/table-datatables-managed.js" type="text/javascript"></script>

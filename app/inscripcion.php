@@ -149,7 +149,7 @@ $q=mysql_query($sql);
                                 <div class="col-md-3">
                                     <div class="input-icon">
                                         <i class="fa fa-phone"></i>
-                                        <input type="text" class="form-control" name="adicional_telefono" id="adicional_telefono"> </div>
+                                        <input type="text" class="form-control" name="adicional_telefono" id="adicional_telefono" maxlength="10"> </div>
                                 </div>
                             </div>
                         

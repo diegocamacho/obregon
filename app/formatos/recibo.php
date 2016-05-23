@@ -4,14 +4,13 @@ include('../includes/session.php');
 include('../includes/funciones.php');
 include('num_letra.php');
 ob_start();
-$id_alumno=$_GET['id'];
-$sql="SELECT *, alumnos.nombre AS alumno, tutores.nombre AS tutor, salones.nombre AS salon, inscripcion.fecha_hora AS fechahora FROM alumnos 
-JOIN inscripcion ON inscripcion.id_alumno=alumnos.id_alumno
-JOIN tutores ON tutores.id_tutor=inscripcion.id_tutor
-JOIN salones ON salones.id_salon=inscripcion.id_salon
-LEFT JOIN pagos ON pagos.id_alumno=alumnos.id_alumno
-JOIN tipo_pago ON tipo_pago.id_tipo_pago=pagos.id_tipo_pago
-WHERE alumnos.id_alumno=$id_alumno AND pagos.id_tipo_pago=1";
+$id_pago=$_GET['id'];
+$sql="SELECT *, alumnos.nombre AS alumno, tutores.nombre AS tutor, salones.nombre AS salon, pagos.fecha_hora AS fechahora FROM alumnos 
+JOIN inscripcion ON inscripcion.id_alumno=alumnos.id_alumno 
+JOIN tutores ON tutores.id_tutor=inscripcion.id_tutor 
+JOIN salones ON salones.id_salon=inscripcion.id_salon 
+JOIN pagos ON pagos.id_alumno=alumnos.id_alumno 
+WHERE id_pago=$id_pago";
 $q=mysql_query($sql);
 $ft=mysql_fetch_assoc($q);
 ?>
@@ -54,6 +53,9 @@ table{
 .f13{
 	font-size: 13px;
 }
+.f16{
+	font-size: 16px;
+}
 .f10{
 	font-size: 10px;
 }
@@ -83,9 +85,9 @@ table{
 
 <!-- Contenido -->
 
-	<h3 style="text-align: center">COMPROBANTE DE INSCRIPCIÓN</h3>
+	<h3 style="text-align: center">COMPROBANTE DE PAGO</h3>
 	
-	<h5 style="text-align: left;">FECHA: <?=devuelveFechaHora($ft['fechahora'])?></h5>
+	<h5 style="text-align: left">FECHA: <?=devuelveFechaHora($ft['fechahora'])?></h5>
 	<table width="760" border=".5" cellpadding="0" cellspacing="0" class="f13">
 		<tr>
 			<td width="500" height="15">PADRE O TUTOR: <b><?=$ft['tutor']?> (<?=$ft['parentesco']?>)</b></td>
@@ -101,41 +103,24 @@ table{
 		</tr>
 		
 		<tr>
-			<td width="700" height="15" colspan="2">PERSONA ADICIONAL: <b><?=$ft['adicional_nombre']?> (<?=$ft['adicional_telefono']?>)</b></td>
+			<td width="700" height="15" colspan="2">ALUMNO: <b><?=$ft['alumno']?></b></td>
+		</tr>
+		<tr>
+			<td width="500" height="15">SAL&Oacute;N: <b><?=$ft['salon']?></b></td>
+			<td width="200" height="15">ENTRADA: <b><?=substr($ft['horario'],0,5)?> HRS.</b></td>
 		</tr>
 	</table>
-	<br><br>
-	<table width="760" border=".5" cellpadding="0" cellspacing="0" class="f13">
-		<tr>
-			<td width="350" height="15">ALUMNO: <b><?=$ft['alumno']?></b></td>
-			<td width="150" height="15">SEXO: <b><? if($ft['sexo']=="M"){ echo "MASCULINO"; }else{ echo "FEMENINO"; }?></b></td>
-			<td width="200" height="15">F. NACIMIENTO: <b><?=fechaLetra($ft['fecha_nacimiento'])?></b></td>
-		</tr>
-		<tr>
-			<td width="700" height="15" colspan="3">CONDICIONES M&Eacute;DICAS: <b><? if($ft['condicion_medica']){ echo $ft['condicion_medica']; }else{ echo "N/A"; }?></b></td>
-		</tr>
-		<tr>
-			<td width="700" height="15" colspan="3">ALERGIAS: <b><? if($ft['alergias']){ echo $ft['alergias']; }else{ echo "N/A";}?></b></td>
-		</tr>
-		
-		<tr>
-			<td width="700" height="15" colspan="3">GRUPO SANGU&Iacute;NEO: <b><? if($ft['grupo_sanguineo']){ echo $ft['grupo_sanguineo']; }else{ echo "N/A"; } ?></b></td>
-		</tr>
-	</table>
+	
 	<br><br>
 	<h3 style="text-align: center">PAGO</h3>
-	<table width="760" border=".5" cellpadding="0" cellspacing="0" class="f13">
+	<table width="760" border=".5" cellpadding="0" cellspacing="0" class="f16">
+		
 		<tr>
-			<td width="200" height="15">SAL&Oacute;N: <b><?=$ft['salon']?></b></td>
-			<td width="270" height="15">PER&Iacute;ODO: <b><?=fechaLetraDos($ft['fecha_inicio'])?></b> A <b><?=fechaLetraDos($ft['fecha_final'])?></b></td>
-			<td width="230" height="15">HORA DE ENTRADA: <b><?=substr($ft['horario'],0,5)?> HRS.</b></td>
+			<td width="700" height="15">PAGO: <b><?=number_format($ft['monto'],2)?> <?=mb_strtoupper(NumLet(number_format($ft['monto'],2)),'UTF-8')?></b> </td>
 		</tr>
 		<tr>
-			<td width="700" height="15" colspan="3">PAGO: <b><?=number_format($ft['monto'],2)?> <?=mb_strtoupper(NumLet(number_format($ft['monto'],2)),'UTF-8')?></b> </td>
-		</tr>
-		<tr>
-			<td width="700" height="15" colspan="3">
-				<? if($ft['libro']==1){ echo "<b>INCLUYE GU&Iacute;A.</b><br>"; }?> <? if($ft['observacion']){ echo "OBSERVACI&Oacute;N: <b>".$ft['observacion']."</b>"; }?>
+			<td width="700" height="15">
+				<? if($ft['observacion']){ echo "CONCEPTO: <b>".$ft['observacion']."</b>"; }?>
 			</td>
 		</tr>
 	</table>

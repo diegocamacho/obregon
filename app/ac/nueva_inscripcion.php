@@ -7,7 +7,7 @@ extract($_POST);
 
 //REVISAMOS Y CHECAMOS DATOS DEL TUTOR
 if(!$nombre) exit("No escribío el nombre del tutor");
-if(limpiaStr($nombre,1,1)) exit("El nombre del tutor que escribío no es válido");
+$nombre=limpiaStr($nombre,1,1);
 if(!$telefono1) exit("No coloco el número de celular");
 if(!escapar($telefono1,1) || strlen($telefono1)<10) exit("El número celular que colocó no es válido");
 if(!$telefono2) exit("No coloco el teléfono de casa");
@@ -15,23 +15,26 @@ if(!escapar($telefono2,1)) exit("El teléfono de casa que colocó no es válido"
 //if(!$telefono3) exit("No coloco el teléfono de oficina");
 //if(!escapar($telefono3,1)) exit("El número celular que colocó no es válido");
 if(!$direccion) exit("No escribío la dirección del tutor");
-if(limpiaStr($direccion,1,1)) exit("La dirección que escribío no es válida");
+$direccion=limpiaStr($direccion,1,1);
 if(!$parentesco) exit("No escribío el parentesco del tutor");
-if(limpiaStr($parentesco,1,1)) exit("El parentesco que escribío no es válido");
+$parentesco=limpiaStr($parentesco,1,1);
 if(!$email) exit("No escribío el email del tutor");
 if(!validarEmail($email)) exit("El email que escríbio no es válido");
+$condiciones=limpiaStr($condiciones,1,1);
+$alergias=limpiaStr($alergias,1,1);
+$grupo_sanguineo=limpiaStr($grupo_sanguineo,1,1);
 //FIN DATOS TUTOR
 //ADICIONALES
 if($adicional_nombre || $adicional_telefono){
 	if(!$adicional_nombre) exit("No coloco el nombre de la persona adicional");
-	if(limpiaStr($adicional_nombre,1,1)) exit("El nombre del adicional que escribío no es válido");
+	$adicional_nombre=limpiaStr($adicional_nombre,1,1);
 	if(!$adicional_telefono) exit("No coloco el teléfono de la persona adicional");
-	if(!limpiaStr($adicional_telefono,1,1)) exit("El teléfono del adicional que colocó no es válido");
+	$adicional_telefono=limpiaStr($adicional_telefono,1,1);
 }
 //FIN ADICIONALES
 //REVISAMOS Y CHECAMOS DATOS DEL ALUMNO
 if(!$alumno_nombre) exit("No escribío el nombre del alumno");
-if(limpiaStr($alumno_nombre,1,1)) exit("El nombre del alumno que escribío no es válido");
+$alumno_nombre=limpiaStr($alumno_nombre,1,1);
 if(!$fecha_nacimiento) exit ("Debe escribir la fecha de nacimiento del alumno");
 $fecha_nacimiento = fechaBase($fecha_nacimiento);
 if(!$sexo) exit ("Debe elegir el género del alumno");
@@ -67,8 +70,8 @@ $inicio = fechaBase($inicio);
 $final = fechaBase($final);
 $dias = (strtotime($final) - strtotime($inicio)) /24/3600;
 $dias++;
-$q3 = mysql_query("INSERT INTO pagos (id_alumno,fecha_inicio,fecha_final,dias,monto,observacion)
-	VALUES ('$id_alumno','$inicio','$final','$dias','$pago','$observ_pago')");
+$q3 = mysql_query("INSERT INTO pagos (id_alumno,id_tipo_pago,fecha_inicio,fecha_final,dias,monto,observacion,fecha_hora)
+	VALUES ('$id_alumno','1','$inicio','$final','$dias','$pago','$observ_pago','$fechahora')");
 
 if($q && $q2 && $q3){
 	$q4 = mysql_query("INSERT INTO inscripcion (id_usuario,id_alumno,id_tutor,id_salon,horario,libro,fecha_hora)

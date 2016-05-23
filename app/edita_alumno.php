@@ -16,7 +16,9 @@ $qtutor = mysql_query("SELECT * FROM tutores WHERE id_tutor = '$id_tutor'");
 $alumno = mysql_fetch_assoc($qalumno);
 $tutor = mysql_fetch_assoc($qtutor);
 
-$sql_pagos="SELECT * FROM pagos WHERE id_alumno=$id_alumno";
+$sql_pagos="SELECT * FROM pagos 
+JOIN tipo_pago ON tipo_pago.id_tipo_pago=pagos.id_tipo_pago
+WHERE id_alumno=$id_alumno";
 $q_pagos=mysql_query($sql_pagos);
 $valida=mysql_num_rows($q_pagos);
 ?>
@@ -232,18 +234,19 @@ $valida=mysql_num_rows($q_pagos);
                         		    </div>
                         		</form>
                             </div>
-                            <div class="tab-pane" id="portlet_tab2">
+                            <div class="tab-pane" id="portlet_tab2" style="min-height: 600px;">
                                 <h4>Historial de pagos</h4>
                         		<? if($valida){ ?>
                         		<table class="table table-striped table-bordered table-hover" >
                                     <thead>
                                         <tr>
-                                            <th width="10%"> Fecha Inicio </th>
-                                            <th width="10%"> Fecha Final </th>
+                                            <th width="12%"> Fecha Inicio </th>
+                                            <th width="12%"> Fecha Final </th>
                                             <th width="10%"> Días  </th>
+                                            <th width="10%"> Tipo  </th>
                                             <th width="10%" style="text-align: center"> Monto </th>
-                                            <th width="50%"> Observación </th>
-                                            <th width="10%">  </th>
+                                            <th width="30%"> Observación </th>
+                                            <th width="16%">  </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -252,9 +255,11 @@ $valida=mysql_num_rows($q_pagos);
                                             <td> <?=fechaLetra($ft['fecha_inicio'])?> </td>
                                             <td> <?=fechaLetra($ft['fecha_final'])?> </td>
                                             <td><?=$ft['dias']?></td>
+                                            <td><?=$ft['tipo_pago']?></td>
                                             <td align="right"><?=number_format($ft['monto'],2)?></td>
                                             <td><?=$ft['observacion']?></td>
                                             <td align="right">
+	                                            <a target="_blank" href="<? if($ft['id_tipo_pago']==1){ echo 'formatos/inscripcion.php?id='.$id_alumno; }else{ echo 'formatos/recibo.php?id='.$ft['id_pago']; }?>" class="btn sbold green btn-xs" role="button">Recibo</a>&nbsp;
 	                                            <a href="#" onclick="EliminaPago(<?=$ft['id_pago']?>)" class="btn sbold red btn-xs" role="button">Eliminar</a>
                                             </td>
                                         </tr>
