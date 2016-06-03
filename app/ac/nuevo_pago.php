@@ -13,10 +13,13 @@ if($id_tipo_pago==2){
 	if(!$inicio) exit("Debe escribir una fecha de inicio");
 	if(!$final) exit("Debe escribir una fecha de fin");
 	
-	$concepto="PAGO DE COLEGIATURA DEL ".$inicio." AL ".$final;
-	
 	$inicio = fechaBase($inicio);
 	$final = fechaBase($final);
+	
+	$es_inicio=fechaLetraDos($inicio);
+	$es_final=fechaLetraDos($final);
+	
+	$concepto="PAGO DE COLEGIATURA DEL ".$es_inicio." AL ".$es_final;
 	
 	if($final<$inicio) exit("La fecha final no puede ser menor a la fecha de inicio");
 	

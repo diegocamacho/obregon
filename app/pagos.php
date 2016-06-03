@@ -1,6 +1,7 @@
 <?
 $sql="SELECT * FROM pagos 
 JOIN tipo_pago ON tipo_pago.id_tipo_pago=pagos.id_tipo_pago
+JOIN alumnos On alumnos.id_alumno=pagos.id_alumno
 ORDER BY fecha_hora ASC";
 $q=mysql_query($sql);
 $valida=mysql_num_rows($q);
@@ -57,10 +58,9 @@ $q3=mysql_query($sq3);
                             <thead>
                                 <tr>
                                     <th width="15%">Fecha</th>
-                                    <th width="5%">Días</th>
-                                    <th width="10%">Tipo</th>
+                                    <th width="25%">Alumno</th>
+                                    <th width="34%">Descripción</th>
                                     <th width="10%" style="text-align: center">Monto</th>
-                                    <th width="44%">Observación</th>
                                     <th width="16%"></th>
                                 </tr>
                             </thead>
@@ -68,10 +68,9 @@ $q3=mysql_query($sq3);
 	                            <? while($ft=mysql_fetch_assoc($q)){ ?>
                                 <tr class="odd gradeX">
                                     <td><?=devuelveFechaHora($ft['fecha_hora'])?></td>
-                                    <td><? if($ft['dias']==0){ echo "N/A"; }else{ echo $ft['dias']; }?></td>
-                                    <td><?=$ft['tipo_pago']?></td>
-                                    <td align="right"><?=number_format($ft['monto'],2)?></td>
+                                    <td><?=$ft['nombre']?></td>
                                     <td><?=$ft['observacion']?></td>
+                                    <td align="right"><?=number_format($ft['monto'],2)?></td>
                                     <td align="right">
 	                                    <a target="_blank" href="<? if($ft['id_tipo_pago']==1){ echo 'formatos/inscripcion.php?id='.$ft['id_alumno']; }else{ echo 'formatos/recibo.php?id='.$ft['id_pago']; }?>" class="btn sbold green btn-xs" role="button">Recibo</a>&nbsp;
 	                                    <a href="#" onclick="EliminaPago(<?=$ft['id_pago']?>)" class="btn sbold red btn-xs" role="button">Eliminar</a>

@@ -41,18 +41,18 @@ if(!$sexo) exit ("Debe elegir el género del alumno");
 //FIN DATOS ALUMNO
 //REVISAMOS LO DE LOS PAGOS
 if(!$id_salon) exit("Debe seleccionar el salón de clases");
-if(!$inicio) exit("Debe escribir una fecha de inicio");
-if(!$final) exit("Debe escribir una fecha de fin");
+//if(!$inicio) exit("Debe escribir una fecha de inicio");
+//if(!$final) exit("Debe escribir una fecha de fin");
 if(!$hora_entrada) exit("Debe seleccionar la hora de entrada del alumno");
 $hora_entrada = date("H:i",strtotime($hora_entrada));
-if($beca){
+/*if($beca){
 	$pago = 0;
 }else{
 	if(!$pago) exit("Debe escribir la cantidad de pago que se realiza");
 }
 if($libro){
 	$libro = 1;
-}
+}*/
 //FIN DE LOS PAGOS
 
 //INSERTAMOS AL TUTOR
@@ -70,12 +70,12 @@ $inicio = fechaBase($inicio);
 $final = fechaBase($final);
 $dias = (strtotime($final) - strtotime($inicio)) /24/3600;
 $dias++;
-$q3 = mysql_query("INSERT INTO pagos (id_alumno,id_tipo_pago,fecha_inicio,fecha_final,dias,monto,observacion,fecha_hora)
-	VALUES ('$id_alumno','1','$inicio','$final','$dias','$pago','$observ_pago','$fechahora')");
+/*$q3 = mysql_query("INSERT INTO pagos (id_alumno,id_tipo_pago,fecha_inicio,fecha_final,dias,monto,observacion,fecha_hora)
+	VALUES ('$id_alumno','1','$inicio','$final','$dias','$pago','$observ_pago','$fechahora')");*/
 
-if($q && $q2 && $q3){
+if($q && $q2){
 	$q4 = mysql_query("INSERT INTO inscripcion (id_usuario,id_alumno,id_tutor,id_salon,horario,libro,fecha_hora)
-		VALUES ('$s_id','$id_alumno','$id_tutor','$id_salon','$hora_entrada','$libro','$fechahora')");
+		VALUES ('$s_id_usuario','$id_alumno','$id_tutor','$id_salon','$hora_entrada','$libro','$fechahora')");
 	if($q4){
 		echo "1";
 	}else{

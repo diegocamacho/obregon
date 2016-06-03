@@ -115,7 +115,7 @@ table{
 	<table width="760" border=".5" cellpadding="0" cellspacing="0" class="f16">
 		
 		<tr>
-			<td width="700" height="15">PAGO: <b><?=number_format($ft['monto'],2)?> </td>
+			<td width="700" height="15">PAGO: <b><?=number_format($ft['monto'],2)?></b> </td>
 		</tr>
 		<tr>
 			<td width="700" height="15">

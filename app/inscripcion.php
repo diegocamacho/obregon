@@ -215,7 +215,7 @@ $q=mysql_query($sql);
 
                             
                         <hr>
-                        <h4>Datos de Pago</h4>
+                        <h4>Datos de Académicos</h4>
                         
                         	<div class="form-group">
                                 <label for="inputEmail12" class="col-md-2 control-label">Salón <label class="text-danger">*</label></label>
@@ -228,7 +228,7 @@ $q=mysql_query($sql);
                                     </select>
                                 </div>
                             </div>
-                            
+                            <!--
                             <div class="form-group">
                                 <label for="inputEmail12" class="col-md-2 control-label">Periódo de Clase <label class="text-danger">*</label></label>
                                 <div class="col-md-6">
@@ -236,11 +236,10 @@ $q=mysql_query($sql);
                                         <input type="text" class="form-control" name="inicio">
                                         <span class="input-group-addon"> al </span>
                                         <input type="text" class="form-control" name="final"> </div>
-                                    <!-- /input-group -->
                                     <span class="help-block"> Seleccione el rango de fechas </span>
                                 </div>
                             </div>
-                            
+                            -->
                             <div class="form-group">
                                 <label for="inputEmail12" class="col-md-2 control-label">Hora de Entrada <label class="text-danger">*</label></label>
                                 <div class="col-md-2">
@@ -254,7 +253,7 @@ $q=mysql_query($sql);
                                     </div>
                                 </div>
                             </div>
-                            
+                            <!--
                             <div class="form-group">
                                 <label for="inputEmail12" class="col-md-2 control-label">Pago <label class="text-danger">*</label></label>
                                 <div class="col-md-2">
@@ -277,7 +276,7 @@ $q=mysql_query($sql);
                                     </label>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="inputEmail12" class="col-md-2 control-label">Notas u Observaciones</label>
                                 <div class="col-md-6">
@@ -286,7 +285,7 @@ $q=mysql_query($sql);
                                         <input type="text" class="form-control" name="observ_pago" id="observ_pagos" > </div>
                                 </div>
                             </div>
-
+							-->
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <button type="button" class="btn green" id="btn-inscripcion" onclick="NuevaInscripcion();">Inscribir</button>
@@ -334,7 +333,7 @@ function NuevaInscripcion(){
 	    }
 	});
 }
-
+/*
 $('#beca').click(function(){
     if($('#beca').is(':checked')){
         $('#pago').attr('disabled',true);
@@ -342,5 +341,5 @@ $('#beca').click(function(){
     }else{
         $('#pago').attr('disabled',false);;
     }
-});
+});*/
 </script>
