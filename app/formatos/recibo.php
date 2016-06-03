@@ -2,7 +2,6 @@
 include('../includes/db.php');
 include('../includes/session.php');
 include('../includes/funciones.php');
-include('num_letra.php');
 ob_start();
 $id_pago=$_GET['id'];
 $sql="SELECT *, alumnos.nombre AS alumno, tutores.nombre AS tutor, salones.nombre AS salon, pagos.fecha_hora AS fechahora FROM alumnos 
@@ -116,7 +115,7 @@ table{
 	<table width="760" border=".5" cellpadding="0" cellspacing="0" class="f16">
 		
 		<tr>
-			<td width="700" height="15">PAGO: <b><?=number_format($ft['monto'],2)?> <?=mb_strtoupper(NumLet(number_format($ft['monto'],2)),'UTF-8')?></b> </td>
+			<td width="700" height="15">PAGO: <b><?=number_format($ft['monto'],2)?> </td>
 		</tr>
 		<tr>
 			<td width="700" height="15">

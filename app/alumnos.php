@@ -3,7 +3,6 @@ $sql="SELECT *, alumnos.nombre AS alumno, tutores.nombre AS tutor, salones.nombr
 JOIN inscripcion ON inscripcion.id_alumno=alumnos.id_alumno
 JOIN tutores ON tutores.id_tutor=inscripcion.id_tutor
 JOIN salones ON salones.id_salon=inscripcion.id_salon
-LEFT JOIN pagos ON pagos.id_alumno=alumnos.id_alumno
 WHERE alumnos.activo=1";
 $q=mysql_query($sql);
 
@@ -11,7 +10,6 @@ $sql2="SELECT *, alumnos.nombre AS alumno, tutores.nombre AS tutor, salones.nomb
 JOIN inscripcion ON inscripcion.id_alumno=alumnos.id_alumno
 JOIN tutores ON tutores.id_tutor=inscripcion.id_tutor
 JOIN salones ON salones.id_salon=inscripcion.id_salon
-LEFT JOIN pagos ON pagos.id_alumno=alumnos.id_alumno
 WHERE alumnos.activo=0";
 $q2=mysql_query($sql2);
 $valida=mysql_num_rows($q2);
@@ -71,7 +69,6 @@ $valida=mysql_num_rows($q2);
                                             <th> Teléfono </th>
                                             <th> Salón </th>
                                             <th> Horario </th>
-                                            <th> Vencimiento </th>
                                             <th>  </th>
                                         </tr>
                                     </thead>
@@ -84,7 +81,6 @@ $valida=mysql_num_rows($q2);
                                             <td><?=$ft['telefono1']?></td>
                                             <td> <?=$ft['salon']?> </td>
                                             <td> <?=substr($ft['horario'],0,5)?> </td>
-                                            <td> <?=fechaLetra($ft['fecha_final'])?> </td>
                                             <td align="right">
 	                                            <a href="?Modulo=EditaAlumno&id=<?=$ft['id_alumno']?>" class="btn sbold green btn-xs" role="button">Perfil</a>
                                             </td>
@@ -104,7 +100,6 @@ $valida=mysql_num_rows($q2);
                                             <th> Teléfono </th>
                                             <th> Salón </th>
                                             <th> Horario </th>
-                                            <th> Vencimiento </th>
                                             <th>  </th>
                                         </tr>
                                     </thead>
@@ -117,7 +112,6 @@ $valida=mysql_num_rows($q2);
                                             <td><?=$ft['telefono1']?></td>
                                             <td> <?=$ft['salon']?> </td>
                                             <td> <?=substr($ft['horario'],0,5)?> </td>
-                                            <td> <?=fechaLetra($ft['fecha_final'])?> </td>
                                             <td align="right">
 	                                            <a href="?Modulo=EditaAlumno&id=<?=$ft['id_alumno']?>" class="btn sbold green btn-xs" role="button">Perfil</a>
                                             </td>
