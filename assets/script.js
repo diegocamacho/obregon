@@ -3,7 +3,7 @@
 
 
 
-/*----------------------------------------------------- Newssleter and contact Form -------------------------*/
+/*----------------------------------------------------- Newssleter and contact Form -------------------------*
 	$("#newsletter, #contact, #request").submit(function() {
 		var elem = $(this);
 		var urlTarget = $(this).attr("action");
