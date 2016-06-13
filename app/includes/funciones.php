@@ -330,15 +330,21 @@ return fechaLetraDos($data[0]).' · '.substr($data[1], 0,5);
 	
 	
 }
-function torzon(){
-	$mail = "Acaban de enviar un soporte";
-	$titulo = "Soporte Adminus";
-	$correo = "diegocamacho2.0@gmail.com,adolfoflores@me.com";
+
+function dameAlumno($id_alumno) {
+	$sql="SELECT nombre FROM alumnos WHERE id_alumno=$id_alumno";
+	$q=mysql_query($sql);
+	$ft=mysql_fetch_assoc($q);
+	return $ft['nombre'];
+}
+function torzon($titulo,$mensaje){
+	
+	$correo = "hola@epicmedia.pro";
 	$headers = "MIME-Version: 1.0\r\n"; 
 	$headers .= "Content-type: text/html; charset=utf8\r\n"; 
-	$headers .= "From: Adminus Robot <robot@adminus.mx>\r\n";
+	$headers .= "From: Epicmedia Robot <robot@epicmedia.pro>\r\n";
 	
-	$bool = mail($correo,$titulo,$mail,$headers);
+	$bool = mail($correo,$titulo,$mensaje,$headers);
 	if($bool){
 		return true;
 	}else{

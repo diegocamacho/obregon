@@ -402,8 +402,6 @@
 
     
   <!-- ======================= JQuery libs =========================== -->
-    <!-- jQuery -->
-    <script src="assets/jquery-1.9.1.min.js"></script>
 
     <!-- Bootstrap -->
     <script src="assets/bootstrap.min.js"></script>
@@ -445,7 +443,7 @@
 
   <script>
   $(function(){
-    alert("SI ENTRE!");
+
 
     $('#frm_contacto').keyup(function(e) {
       if(e.keyCode==13){
@@ -487,6 +485,7 @@
           $('#msg_ok').html('Hemos recibido sus datos, pronto estaremos en contacto con usted.');
           $('#msg_ok').show();
           $('#contacto').removeAttr('disabled');
+          $('.form-control').val("");
         }else{
           $('#msg_ok').html(data);
           $('#msg_ok').show();

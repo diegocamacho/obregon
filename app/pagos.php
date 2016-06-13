@@ -1,8 +1,12 @@
 <?
+$fecha=$_GET['fecha'];
+if(isset($fecha)){ $fecha=fechaBase($fecha); }else{ $fecha=$fecha_actual; }
 $sql="SELECT * FROM pagos 
 JOIN tipo_pago ON tipo_pago.id_tipo_pago=pagos.id_tipo_pago
 JOIN alumnos On alumnos.id_alumno=pagos.id_alumno
+WHERE DATE(fecha_hora)='$fecha'
 ORDER BY fecha_hora ASC";
+
 $q=mysql_query($sql);
 $valida=mysql_num_rows($q);
 
@@ -46,9 +50,10 @@ $q3=mysql_query($sq3);
 					<div class="portlet-title">
 						<div class="caption">
 							<i class="icon-basket font-green-sharp"></i>
-							<span class="caption-subject font-green-sharp bold uppercase">Pagos</span>
+							<span class="caption-subject font-green-sharp bold uppercase">Pagos de hoy</span>
 						</div>
 						<div class="actions btn-set">
+							<a href="javascript:;" class="btn btn-sm red easy-pie-chart-reload" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#CambiaFecha"><i class="fa fa-calendar"></i> Cambiar Fecha </a>&nbsp;&nbsp;&nbsp;
 							<a href="javascript:;" class="btn btn-sm green easy-pie-chart-reload" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#NuevaVenta"><i class="fa fa-plus"></i> Nuevo Pago </a>
 						</div>
 					</div>
@@ -79,8 +84,14 @@ $q3=mysql_query($sq3);
                                 <? } ?>
                             </tbody>
                         </table>
+
+                        <div class="row">
+	                        <div class="col-md-12" style="text-align: right;">
+								<a href="formatos/ingresos.php?fecha=<?=$fecha?>" class="btn btn-sm btn-default" target="_blank" ><i class="fa fa-print"></i> Imprimir </a>
+	                        </div>
+                        </div>
                         <? }else{ ?>
-                        <div class="alert alert-info" role="alert">Aún no se han recibido pagos de este alumno.</div>
+                        <div class="alert alert-info" role="alert">No se han registrado pagos en esta fecha.</div>
                         <? } ?>
 					</div>
 				</div>
@@ -183,6 +194,39 @@ $q3=mysql_query($sq3);
 
 
 
+<!-- Modal -->
+<div class="modal fade" id="CambiaFecha">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title">Ver pagos por fecha</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="alert alert-danger oculto" role="alert" id="msg_error"></div>
+<!--Formulario -->
+		<form action="#" class="form-horizontal" id="frm_guarda">
+            
+            <div class="form-group form-group-lg">
+                <label class="control-label col-md-4">Seleccione Fecha</label>
+                <div class="col-md-8">
+                        <input type="text" class="form-control fecha" name="fecha" id="fecha"> 
+                </div>
+            </div>            
+            
+		</form>
+	</div>
+		
+    <div class="modal-footer">
+    	<img src="assets/global/img/loading-spinner-grey.gif" border="0" id="load2" width="20" class="oculto" />
+		<button type="button" class="btn btn-default btn_ac" data-dismiss="modal">Cancelar</button>
+		<button type="button" class="btn btn-success btn_ac" onclick="CambiaFecha()">Aceptar</button>
+	</div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 
 
 
@@ -245,5 +289,20 @@ function NuevaVenta(){
 			$('#msg_error').show('Fast');
 	    }
 	});
+}
+
+function CambiaFecha(){
+	var fecha = $('#fecha').val();
+	$('.btn_ac').hide();
+	$('#load2').show();
+	
+	if(fecha){
+		window.open("?Modulo=Pagos&fecha="+fecha, "_self");
+	}else{
+		alert("Seleccione una fecha");
+		$('#load').hide();
+		$('.btn').show();
+		return false;
+	}
 }
 </script>
