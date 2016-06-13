@@ -2,8 +2,7 @@
 if(empty($_POST['nombre'])  		||
    empty($_POST['telefono']))
    {
-	echo "Los campos llegaron vacios";
-	return false;
+	exit("Los campos llegaron vacios");
    }
 	
 $nombre = $_POST['nombre'];
@@ -15,6 +14,10 @@ $email_subject = "Contacto desde Obregón";
 $email_body = "Hemos recibido un contacto desde la página Web.\n\n"."Detalles:\n\nNombre: $nombre\n\nTeléfono: $phone\n\n";
 $headers = "From: robot@epicmedia.pro\n";
 $headers .= "Reply-To: $email_address";	
-mail($to,$email_subject,$email_body,$headers);
-return true;
+if(mail($to,$email_subject,$email_body,$headers)){
+	
+echo "1";
+}else{
+	exit("Ocurrió un error intente nuevamente.");
+}
 ?>

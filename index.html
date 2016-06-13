@@ -42,7 +42,7 @@
    <!--[if lt IE 9]>
    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
    <![endif]-->
-   <div class="fit-vids-style">­
+   <div class="fit-vids-style">
 	   <style>               
 	   .fluid-width-video-wrapper { 
 		   	width: 100%;
@@ -59,6 +59,8 @@
 		</style>
 	</div>
 	<script src="assets/modernizr.custom.js"></script>
+  <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   </head>
 
 
@@ -110,20 +112,21 @@
 					<h2>Cursos Especializados · Asesorías · Ludoteca</h2>
 					<p>Somos un Centro de Enseñanza especializado con instalaciones de alto nivel, si usted tiene alguna duda acerca de nuestros cursos o servicios dejenos sus datos y nosotros nos pondremos en contacto con usted.</p>
 					<form id="frm_contacto" class="row suscribe">
+						<span id="msg_ok" style="margin-top: 0px; font-size: 20px;display: none;"></span>
 						<div class="row">
 							<div class="col-sm-6" style="margin-bottom: 20px;">
 								<input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre" style="margin-bottom: none;">
 								<span id="msg_nombre" style="margin-top: 0px; font-size: 14px;display: none;"></span>
 							</div>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" placeholder="Teléfono" name="telefono" id="telefono">
+								<input type="text" class="form-control" placeholder="Teléfono" name="telefono" maxlength="10" id="telefono">
 								<span id="msg_telefono" style="margin-top: 0px; font-size: 14px;display: none;"></span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="text-center">
-									<button type="button" onclick="Contacto();" class="btn text-center btn-block">Quiero que me Llamen</button>
+									<button type="button" id="contacto" onClick="Contacto();" class="btn text-center btn-block">Quiero que me Llamen</button>
 								</div>
 							</div>
 						</div>
@@ -294,11 +297,11 @@
 		      <h1>School Building Video Tour</h1>
 		      <p>Nulla ornare tortor quis rhoncus vulputate. Vivamus a enim vel erat accumsan hendrerit. Nulla ornare tortor quis rhoncus vulputate. Vivamus a enim vel erat accumsan hendrerit.</p>
 		      <ul>
-				<li><a href="http://diploma.coralixthemes.com/blue/index.html#"> <i class="glyphicon glyphicon-ok"></i>Nulla ornare tortor quis rhoncus vulputate.</a> </li>
-				<li><a href="http://diploma.coralixthemes.com/blue/index.html#"> <i class="glyphicon glyphicon-ok"></i>Vivamus a enim vel erat accumsan hendrerit. </a> </li>
-				<li><a href="http://diploma.coralixthemes.com/blue/index.html#"> <i class="glyphicon glyphicon-ok"></i>Nulla ornare tortor quis rhoncus vulputate.</a> </li>
-				<li><a href="http://diploma.coralixthemes.com/blue/index.html#"> <i class="glyphicon glyphicon-ok"></i>Retina Display for Mobile HD Devices.</a> </li>
-				<li><a href="http://diploma.coralixthemes.com/blue/index.html#"> <i class="glyphicon glyphicon-ok"></i>Vivamus asan 12,000 happy costumers.</a> </li>
+				<li><a href="#"> <i class="glyphicon glyphicon-ok"></i>Nulla ornare tortor quis rhoncus vulputate.</a> </li>
+				<li><a href="#"> <i class="glyphicon glyphicon-ok"></i>Vivamus a enim vel erat accumsan hendrerit. </a> </li>
+				<li><a href="#"> <i class="glyphicon glyphicon-ok"></i>Nulla ornare tortor quis rhoncus vulputate.</a> </li>
+				<li><a href="#"> <i class="glyphicon glyphicon-ok"></i>Retina Display for Mobile HD Devices.</a> </li>
+				<li><a href="#"> <i class="glyphicon glyphicon-ok"></i>Vivamus asan 12,000 happy costumers.</a> </li>
 		      </ul>   
 		    </div>
 			-->
@@ -338,7 +341,7 @@
                 	<h2>We are too good to be true</h2>
                     <h3>We have added swipe function to Bootstrap carousel. It can be any width, depends of the layout that you want. This one is 1/2 width. You can find full width slider in header of section.</h3>
                     <p>There's a fire starting in my heart, Reaching a fever pitch and it's bringing me out the dark. Finally, I can see you crystal clear, Go ahead and sell me out and I'll lay your ship bare, See how I'll leave with every piece of you.</p>
-                    <a href="http://diploma.coralixthemes.com/blue/index.html#" class="btn btn-default">Read more</a>
+                    <a href="#" class="btn btn-default">Read more</a>
                 </div>
            </div>
  
@@ -347,7 +350,7 @@
                 	<h2>Learn and play all the time</h2>
                     <h3>We have added swipe function to Bootstrap carousel. It can be any width, depends of the layout that you want. This one is 1/2 width. You can find full width slider in header of section.</h3>
                     <p>There's a fire starting in my heart, Reaching a fever pitch and it's bringing me out the dark. Finally, I can see you crystal clear, Go ahead and sell me out and I'll lay your ship bare, See how I'll leave with every piece of you.</p>
-                    <a href="http://diploma.coralixthemes.com/blue/index.html#" class="btn btn-default">Read more</a>                	
+                    <a href="#" class="btn btn-default">Read more</a>                	
                 </div>
                 <div class="col-md-6">
                   <a class="example-image-link" href="assets/info-02.jpg" data-lightbox="example-set" title="Title Example">
@@ -366,7 +369,7 @@
                 	<h2>The best classes for Kids</h2>
                     <h3>We have added swipe function to Bootstrap carousel. It can be any width, depends of the layout that you want. This one is 1/2 width. You can find full width slider in header of section.</h3>
                     <p>There's a fire starting in my heart, Reaching a fever pitch and it's bringing me out the dark. Finally, I can see you crystal clear, Go ahead and sell me out and I'll lay your ship bare, See how I'll leave with every piece of you.</p>
-                    <a href="http://diploma.coralixthemes.com/blue/index.html#" class="btn btn-default">Read more</a>
+                    <a href="#" class="btn btn-default">Read more</a>
                 </div>
            </div>          
                      
@@ -396,8 +399,6 @@
     
     
   <a href="#" class="scrollup" style="display: none;"><i class="icon-up-open"></i></a>      
-
-
 
     
   <!-- ======================= JQuery libs =========================== -->
@@ -438,46 +439,59 @@
 
     <!-- Custom script -->
     <script src="assets/script.js"></script>
-    <script>
-	$(function(){
-		$('#frm_contacto').keyup(function(e) {
-			if(e.keyCode==13){
-				Contacto();
-			}
-		});
-	});
-	function Contacto(){
-		var nombre = $('#nombre').val();
-		var telefono = $('#telefono').val();
-		
-		if(!nombre){ 
-			$('#msg_nombre').html('Es necesario que escriba su nombre.');
-			$('#msg_nombre').show();
-			$('#nombre').focus();
-			return false;
-		}
-		
-		if(!telefono){ 
-			$('#msg_telefono').html('Es necesario que escriba su teléfono.');
-			$('#msg_telefono').show();
-			$('#telefono').focus();
-			return false;
-		}
-		
-		$('#msg_nombre').hide();
-		$('#msg_telefono').hide();
-		
-		var formulario=$('#frm_contacto').serialize();
-		$.post('ac/contacto.php',formulario,function(data){
-	    	if(data==1){
-		    	$('#msg_ok').html('Hemos recibido sus datos, pronto nos pondremos en contacto con usted.');
-				$('#msg_ok').show();
-	    	}else{
-		    	$('#msg_error').html(data);
-	    		$('#msg_error').show();
-	    	}
-		});
-	}    
-	</script>
+
 
   <!-- ======================= End JQuery libs ======================= -->
+
+  <script>
+  $(function(){
+    alert("SI ENTRE!");
+
+    $('#frm_contacto').keyup(function(e) {
+      if(e.keyCode==13){
+        Contacto();
+      }
+    });
+
+  });
+
+ 
+
+  function Contacto(){
+    var nombre = $('#nombre').val();
+    var telefono = $('#telefono').val();
+    $('#contacto').attr('disabled','disabled');
+    $('#msg_ok').hide();
+    
+    if(!nombre){ 
+      $('#msg_nombre').html('Es necesario que escriba su nombre.');
+      $('#msg_nombre').show();
+      $('#nombre').focus();
+      $('#contacto').removeAttr('disabled');
+      return false;
+    }
+    
+    if(!telefono){ 
+      $('#msg_telefono').html('Es necesario que escriba su teléfono.');
+      $('#msg_telefono').show();
+      $('#telefono').focus();
+      $('#contacto').removeAttr('disabled');
+      return false;
+    }
+    
+    $('#msg_nombre').hide();
+    $('#msg_telefono').hide();
+    var formulario=$('#frm_contacto').serialize();
+    $.post('ac/contacto.php',formulario,function(data){
+        if(data==1){
+          $('#msg_ok').html('Hemos recibido sus datos, pronto estaremos en contacto con usted.');
+          $('#msg_ok').show();
+          $('#contacto').removeAttr('disabled');
+        }else{
+          $('#msg_ok').html(data);
+          $('#msg_ok').show();
+          $('#contacto').removeAttr('disabled');
+        }
+    });
+  }    
+</script>
