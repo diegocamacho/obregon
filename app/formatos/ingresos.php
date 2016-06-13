@@ -81,29 +81,29 @@ table{
 	
 	
 	
-	<h4 style="text-align: right;">REPORTE DE PAGOS DEL <?=fechaLetraDos($fecha)?></h4>
+	<h4 style="text-align: center;">REPORTE DE PAGOS DEL <?=fechaLetraDos($fecha)?></h4>
 	<table width="760" cellpadding="0" cellspacing="0" class="borde-azul f11" >
         <thead>
             <tr class="titulos">
                 <th width="220" height="25" class="f11" style="padding-left: 5px;">ALUMNO</th>
-                <th width="420" height="25" class="f11">DESCRIPCIÓN</th>
+                <th width="390" height="25" class="f11">DESCRIPCIÓN</th>
                 <th width="85" height="25" class="f11" align="center">MONTO</th>
             </tr>
         </thead>
         <tbody>
 	        <? while($ft=mysql_fetch_assoc($q)){ ?>
             <tr>
-                <td height="20" style="padding-left: 5px;border-bottom: 1px #666 solid;"><?=$ft['nombre']?></td>
-                <td height="20" style="border-bottom: 1px #666 solid;"><?=$ft['observacion']?></td>
-                <td height="20" align="right" style="padding-right: 5px;border-bottom: 1px #666 solid;"><?=number_format($ft['monto'],2)?></td>
+                <td width="220" height="20" style="padding-left: 5px;border-bottom: 1px #666 solid;"><?=$ft['nombre']?></td>
+                <td width="390" height="20" style="border-bottom: 1px #666 solid;"><?=$ft['observacion']?></td>
+                <td width="85" height="20" align="right" style="padding-right: 5px;border-bottom: 1px #666 solid;"><?=number_format($ft['monto'],2)?></td>
             </tr>
             <? 
 	            $total+=$ft['monto'];
 	            } ?>
             <tr>
-                <td height="20" style="padding-left: 5px;"></td>
-                <td height="20"></td>
-                <td height="20" align="right" style="padding-right: 5px;"><b><?=number_format($total,2)?></b></td>
+                <td width="220" height="20" style="padding-left: 5px;">&nbsp;</td>
+                <td width="390" height="20">&nbsp;</td>
+                <td width="85" height="20" align="right" style="padding-right: 5px;"><b><?=number_format($total,2)?></b></td>
             </tr>
         </tbody>
     </table>
