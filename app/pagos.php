@@ -50,7 +50,7 @@ $q3=mysql_query($sq3);
 					<div class="portlet-title">
 						<div class="caption">
 							<i class="icon-basket font-green-sharp"></i>
-							<span class="caption-subject font-green-sharp bold uppercase">Pagos de hoy</span>
+							<span class="caption-subject font-green-sharp bold uppercase">Pagos del <?=fechaletraDos($fecha)?></span>
 						</div>
 						<div class="actions btn-set">
 							<a href="javascript:;" class="btn btn-sm red easy-pie-chart-reload" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#CambiaFecha"><i class="fa fa-calendar"></i> Cambiar Fecha </a>&nbsp;&nbsp;&nbsp;
